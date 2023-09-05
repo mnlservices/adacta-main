@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+   <title>Adacta Search Results</title>
+   <title-id>page.adactaSearchResults.title</title-id>
+   <description>Adacta search page for documents and folders</description>
+   <description-id>page.adactaSearch.description</description-id>
+   <template-instance>adacta-search-results</template-instance>
+   <authentication>user</authentication>
+</page>

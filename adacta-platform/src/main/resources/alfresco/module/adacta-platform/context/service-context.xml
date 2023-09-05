@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="adactaAuthorityService" class="nl.defensie.adacta.service.AdactaAuthorityService" />
+
+	<bean id="adactaReportService" class="nl.defensie.adacta.service.AdactaReportService" />
+
+	<bean id="adacta2DatabaseService" class="nl.defensie.adacta.service.Adacta2DatabaseService" />
+
+	<bean id="adactaFileFolderService" class="nl.defensie.adacta.service.AdactaFileFolderService" />
+
+	<bean id="adactaSiteService" class="nl.defensie.adacta.service.AdactaSiteService"/>
+
+	<bean id="adactaSearchService" class="nl.defensie.adacta.service.AdactaSearchService" />
+
+	<bean id="adactaSortService" class="nl.defensie.adacta.service.AdactaSortService" />
+
+	<bean id="adactaPreferenceService" class="nl.defensie.adacta.service.AdactaPreferenceService" />
+	
+	<bean id="adactaDataListService" class="nl.defensie.adacta.service.AdactaDataListService" />
+
+    <bean id="adactaDossierSyncService" class="nl.defensie.adacta.service.AdactaDossierSyncService" />
+ 
+    <bean id="adactaPeopleSyncService" class="nl.defensie.adacta.service.AdactaPeopleSyncService" />
+ 
+    <bean id="adactaRoleSyncService" class="nl.defensie.adacta.service.AdactaRoleSyncService"/>
+
+    <bean id="adactaRoleSyncChecksService" class="nl.defensie.adacta.service.AdactaRoleSyncChecksService"/>
+
+    <bean id="adactaLdapRoleSyncService" class="nl.defensie.adacta.service.AdactaLdapRoleSyncService"/>
+
+    <bean id="adactaArchiveService" class="nl.defensie.adacta.archive.AdactaArchiveService"/>
+    
+    <bean id="adactaArchiveDatabaseService" class="nl.defensie.adacta.archive.AdactaArchiveDatabaseService"/>
+
+    <bean id="adactaMailService" class="nl.defensie.adacta.service.AdactaMailService">
+    	<property name="serviceRegistry">
+      		<ref bean="ServiceRegistry" />
+  		</property>
+  	</bean>
+ 
+    <bean id="limit-site-creators-repo.aclOverrides" class="nl.defensie.adacta.security.MethodInterceptorSecurityOverrider" init-method="init">
+    	<!-- onInterceptor -->
+		<constructor-arg ref="SiteService_security" />
+		
+		<!-- Overrides -->
+		<property name="methodSecurityDefinitions">
+			<map>
+				<entry key="org.alfresco.service.cmr.site.SiteService.createSite" value="ACL_METHOD.ROLE_ADMINISTRATOR,ACL_METHOD.GROUP_SITE_CREATORS,ACL_METHOD.GROUP_SITE_ADMINISTRATORS" />
+				<entry key="org.alfresco.service.cmr.site.SiteService.deleteSite" value="ACL_METHOD.ROLE_ADMINISTRATOR,ACL_METHOD.GROUP_SITE_CREATORS,ACL_METHOD.GROUP_SITE_ADMINISTRATORS" />
+			</map>
+		</property>
+    </bean>
+</beans>

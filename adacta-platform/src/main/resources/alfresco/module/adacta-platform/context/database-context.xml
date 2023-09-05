@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- The (old) DIS_P8 autorisation database. -->
+	
+	<bean id="disp8" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${adacta.jdbc.disp8.driverClassName}" />
+		<property name="url" value="${adacta.jdbc.disp8.url}" />
+		<property name="username" value="${adacta.jdbc.disp8.username}" />
+		<property name="password" value="${adacta.jdbc.disp8.password}" />
+		<property name="initialSize" value="${adacta.jdbc.disp8.initialSize}" />
+		<property name="maxActive" value="${adacta.jdbc.disp8.maxActive}" />
+		<property name="maxIdle" value="${adacta.jdbc.disp8.maxIdle}" />
+	</bean>
+
+	<bean id="alfresco-sync" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+
+	<bean id="cdm-sync" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.cdm.driver}" />
+		<property name="url" value="${db.cdm.url}" />
+		<property name="username" value="${db.cdm.username}" />
+		<property name="password" value="${db.cdm.password}" />
+	</bean>
+
+
+</beans>

@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>Adacta setup page</shortname>
+  <description>Adacta setup page</description>
+  <family>admin-console</family>
+  <url>/nl/defensie/adacta/components/console/setup</url>
+</webscript>

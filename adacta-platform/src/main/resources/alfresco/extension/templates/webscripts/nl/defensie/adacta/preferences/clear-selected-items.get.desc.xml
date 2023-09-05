@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>Clear selected items</shortname>
+	<description>Clear selected items</description>
+	<url>/nl/defensie/adacta/preferences/selected-items/clear</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<family>Adacta</family>
+</webscript>

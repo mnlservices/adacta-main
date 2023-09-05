@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>edit-metadata-mgr</shortname>
+  <description>Edit Document Manager Component</description>
+  <url>/components/edit-document/edit-metadata-mgr</url>
+</webscript>

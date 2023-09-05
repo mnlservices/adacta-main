@@ -1,0 +1,9 @@
+<webscript>
+   <shortname>Get files of folders</shortname>
+   <description>Get files or folders</description>
+   <url>/nl/defensie/adacta/search/importfolderlist?startIndex={startIndex?}&amp;pageSize={pageSize?}&amp;filter={filter?}&amp;sortBy={sortBy?}&amp;dir={dir?}&amp;&amp;searchType={searchType?}</url>
+   <family>Adacta</family>
+   <format default="json" />
+   <authentication>user</authentication>
+   <transaction allow="readonly">required</transaction>
+</webscript>

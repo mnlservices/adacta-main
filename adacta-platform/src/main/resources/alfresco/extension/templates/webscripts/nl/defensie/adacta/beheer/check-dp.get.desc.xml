@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Infotool DP-CODE</shortname>
+  <url>/infotool/dp-code</url>
+  <authentication>none</authentication>
+  <format default="html"></format>
+  <family>ADACTA beheer</family>
+</webscript>

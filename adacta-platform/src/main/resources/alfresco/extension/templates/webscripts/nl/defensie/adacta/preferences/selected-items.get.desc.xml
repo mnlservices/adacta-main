@@ -1,0 +1,9 @@
+<webscript>
+   <shortname>Get selected items</shortname>
+   <description>Get selected items</description>
+   <url>/nl/defensie/adacta/preferences/selected-items/{userName}</url>
+   <family>Adacta</family>
+   <format default="json" />
+   <authentication>user</authentication>
+   <transaction allow="readonly">required</transaction>
+</webscript>

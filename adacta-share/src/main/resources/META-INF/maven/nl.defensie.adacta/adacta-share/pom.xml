@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>nl.defensie.adacta</groupId>
+		<artifactId>adacta</artifactId>
+		<version>0.8.10</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>adacta-share</artifactId>
+	<name>Adacta (Share Client)</name>
+	<packaging>amp</packaging>
+	<description>Adacta (Share Client)</description>
+
+	<properties>
+		<app.amp.client.war.artifactId>${alfresco.share.artifactId}</app.amp.client.war.artifactId>
+		<maven.tomcat.port>80</maven.tomcat.port>
+		<alfresco.repo.url>http://localhost:8080/alfresco</alfresco.repo.url>
+	</properties>
+
+	<dependencies>
+
+		<!-- Custom -->
+		
+		<dependency>
+			<groupId>org.sharextras</groupId>
+			<artifactId>javascript-console-share</artifactId>
+			<version>0.6.0</version>
+			<type>amp</type>
+		</dependency>
+
+		<!-- Alfresco RM -->
+
+		<!-- <dependency> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-rm-enterprise-share</artifactId> <version>2.5.1</version> <type>amp</type> </dependency> <dependency> 
+			<groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-rm-enterprise-share</artifactId> <version>2.5.1</version> <classifier>classes</classifier> <scope>provided</scope> </dependency> -->
+
+		<!-- Alfresco -->
+
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share</artifactId>
+			<version>${share.version}</version>   <!-- use new share version -->
+			<classifier>classes</classifier>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.surf</groupId>  <!-- Surf now maintained by Alfresco -->
+			<artifactId>spring-surf-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share-po</artifactId>
+			<version>${share.version}</version>   <!-- use new share version -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share-po</artifactId>
+			<version>${share.version}</version>   <!-- use new share version -->
+			<classifier>tests</classifier>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-server</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Test NG is defined with test scope in share-po, so need it here too -->
+		<!-- Alfresco code creates a wrapper around Test NG -->
+		<dependency>
+			<groupId>org.alfresco.test</groupId>
+			<artifactId>alfresco-testng</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<generateReports>false</generateReports>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

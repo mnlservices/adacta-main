@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>Dynamic Select One</shortname>
+	<description>Provides a list of a particular datalist which can be used in a drop-down</description>
+	<url>/nl/defensie/adacta/categories/{datalistLocalname}</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<family>Adacta</family>
+</webscript>

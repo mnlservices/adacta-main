@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- Bootstrap Model -->
+
+	<bean id="adacta-platform_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+		<property name="models">
+			<list>
+				<value>alfresco/module/adacta-platform/model/adactaModel.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Separate the datalist model because of LDAP dependency. The datalist model (dl prefix) is not available at bootstrap, because it is now part of the share services module. -->
+
+	<bean id="adacta-platform_shareServices" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+		<property name="models">
+			<list>
+				<value>alfresco/module/adacta-platform/model/adactaDatalistModel.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- I18N -->
+
+	<bean id="adacta-platform_ResourceBundle" class="org.alfresco.i18n.ResourceBundleBootstrapComponent">
+		<property name="resourceBundles">
+			<list>
+				<value>alfresco/module/adacta-platform/messages/adacta-model</value>
+				<value>alfresco/module/adacta-platform/messages/adacta-datalist-model</value>
+				<value>alfresco/module/adacta-platform/messages/adacta-action</value>
+				<value>alfresco/extension/messages/adacta-category-subject-lists</value>
+				<value>alfresco/extension/messages/peoplesoft-roles-authorities</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

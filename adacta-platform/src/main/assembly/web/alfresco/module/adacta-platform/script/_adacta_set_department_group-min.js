@@ -1,0 +1,1 @@
+if(document.parent.hasAspect("ada:rootImportAspect")){adacta.setDepartmentGroupPermissions(person.properties.userName,document)};

@@ -1,0 +1,1 @@
+function main(){var c=10;var d=adacta.getRootImport();for(var a=0;a<c;a++){var b="example_"+Math.floor(Math.random()*1000000)+".pdf";adacta.importClasspathFile(null,d,b);adacta.log("Importing file "+b+".")}}main();

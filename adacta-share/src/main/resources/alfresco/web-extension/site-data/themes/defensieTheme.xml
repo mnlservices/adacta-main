@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<theme>
+   <title>Defensie Theme</title>
+   <title-id>theme.defensieTheme</title-id>
+   <css-tokens>
+      <less-variables>      
+      	 @header-background-color: #e17000; 
+      	 @header-menubar-font-color: #000;      	 
+      	 @header-hover-background-color: #d9deea;
+      	 @header-focus-background-color: #d9deea;
+      	 @header-dropdown-menu-font-color: #000; 
+              
+         @use-legacy-buttons: false;         
+      </less-variables>
+   </css-tokens>
+</theme>

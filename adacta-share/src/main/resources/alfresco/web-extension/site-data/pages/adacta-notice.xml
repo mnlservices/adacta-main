@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+   <title>Adacta Notice</title>
+   <title-id>page.adactaNotice.title</title-id>
+   <description>Adacta notice page for some extra info.</description>
+   <description-id>page.adactaNotice.description</description-id>
+   <template-instance>adacta-notice</template-instance>
+   <authentication>user</authentication>
+</page>

@@ -1,0 +1,9 @@
+<webscript>
+   <shortname>Get root folder node reference</shortname>
+   <description>Get root folder node reference</description>
+   <url>/nl/defensie/adacta/search/rootfolder?aspect={aspect?}</url>
+   <family>Adacta</family>
+   <format default="json" />
+   <authentication>user</authentication>
+   <transaction allow="readonly">required</transaction>
+</webscript>

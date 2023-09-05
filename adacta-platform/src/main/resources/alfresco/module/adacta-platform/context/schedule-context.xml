@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Scheduled job for archiving adacta documents -->
+
+ 	<bean id="adactaArchiveSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory" />
+		<property name="triggers">
+			<list>
+				<bean id="adactaArchiveTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+					<property name="jobDetail" ref="adactaArchiveJob" />
+					<property name="cronExpression" value="${adacta.cron.job.adactaArchive}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="adactaArchiveJob"	class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="nl.defensie.adacta.schedule.ExecuteActionLockedJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="actionService">
+					<ref bean="ActionService" />
+				</entry>
+				<entry key="jobLockService">
+					<ref bean="JobLockService" />
+				</entry>
+				<entry key="authenticationComponent">
+					<ref bean="authenticationComponent" />
+				</entry>
+				<entry key="actionName" value="adactaArchive" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- Scheduled job for deleting marked documents and empty scanbatches -->
+        
+	<bean id="deleteMarkedDocumentsSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory" />
+		<property name="triggers">
+			<list>
+				<bean id="deleteMarkedDocumentsTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+					<property name="jobDetail" ref="deleteMarkedDocumentsJob" />
+					<property name="cronExpression" value="${adacta.cron.job.delete.marked.documents}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="deleteMarkedDocumentsJob"	class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="nl.defensie.adacta.schedule.ExecuteActionLockedJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="actionService">
+					<ref bean="ActionService" />
+				</entry>
+				<entry key="jobLockService">
+					<ref bean="JobLockService" />
+				</entry>
+				<entry key="authenticationComponent">
+					<ref bean="authenticationComponent" />
+				</entry>
+				<entry key="actionName" value="adactaDeleteMarkedDocuments" />
+			</map>
+		</property>
+	</bean>
+	<!-- Scheduled job for importing WIT documents -->
+
+	<bean id="importWITDocumentsSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory" />
+		<property name="triggers">
+			<list>
+				<bean id="importWITDocumentsTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+					<property name="jobDetail" ref="importWITDocumentsJob" />
+					<property name="cronExpression" value="${adacta.cron.job.import.wit.documents}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+ 	<bean id="importWITDocumentsJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="nl.defensie.adacta.schedule.ExecuteActionLockedJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="actionService">
+					<ref bean="ActionService" />
+				</entry>
+				<entry key="jobLockService">
+					<ref bean="JobLockService" />
+				</entry>
+				<entry key="authenticationComponent">
+					<ref bean="authenticationComponent" />
+				</entry>
+				<entry key="actionName" value="adactaImportWITDocuments" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Scheduled job for PDossierSynchronizer -->
+
+	<bean id="pDossierSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory" />
+		<property name="triggers">
+			<list>
+				<bean id="pDossierSynchronizerTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+					<property name="jobDetail" ref="PDossierSynchronizerJob" />
+					<property name="cronExpression" value="${adacta.cron.job.p-dossier.synchronizer}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="PDossierSynchronizerJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="nl.defensie.adacta.schedule.ExecuteActionLockedJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="actionService">
+					<ref bean="ActionService" />
+				</entry>
+				<entry key="jobLockService">
+					<ref bean="JobLockService" />
+				</entry>
+				<entry key="authenticationComponent">
+					<ref bean="authenticationComponent" />
+				</entry>
+				<entry key="actionName" value="adactaDossierSynchronizer" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="rolesSyncSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory" />
+		<property name="triggers">
+			<list>	
+ 				<bean id="rolesSyncTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        			<property name="jobDetail" ref="rolesSyncJob" />
+        			<property name="cronExpression" value="${adacta.cron.job.rolesSync}" />
+    			</bean>
+    		</list>
+    	</property>
+    </bean>    
+ 
+	<bean id="rolesSyncJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+
+		<property name="jobClass" value="nl.defensie.adacta.schedule.ExecuteActionLockedJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="actionService">
+					<ref bean="ActionService" />
+				</entry>
+				<entry key="jobLockService">
+					<ref bean="JobLockService" />
+				</entry>
+				<entry key="authenticationComponent">
+					<ref bean="authenticationComponent" />
+				</entry>
+				<entry key="actionName" value="rolesSync" />
+			</map>
+		</property>
+	</bean>
+
+</beans>

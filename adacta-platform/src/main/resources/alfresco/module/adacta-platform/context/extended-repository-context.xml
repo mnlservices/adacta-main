@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Extending the standard permission service. -->
+
+	<bean id="adacta.permissionServiceImpl" abstract="true" class="org.alfresco.repo.security.permissions.impl.ExtendedAdactaPermissionServiceImpl">
+		<property name="personService">
+			<ref bean="PersonService" />
+		</property>
+		<property name="groupsWithDpallPermissionsMap">
+			<ref bean="groupsWithDpallPermissionsMap" />
+		</property>
+		<property name="permissionsEnabled">
+			<value>${adacta.extended.permission.enabled}</value>
+		</property>
+	</bean>
+	<bean class="org.alfresco.util.BeanExtender">
+		<property name="beanName" value="permissionServiceImpl" />
+		<property name="extendingBeanName" value="adacta.permissionServiceImpl" />
+	</bean>
+
+
+	<!-- This list is a temporary solution (hack) in which we overwrite the DP code of user and give this user DPALL permissions on personnel files. Users that are member of the following 
+		groups will get DPALL permissions. -->
+
+	<util:list id="groupsWithDpallPermissionsMap" value-type="java.lang.String">
+		<value>GROUP_LH02P01DISR84</value>
+		<value>GROUP_LH02P01DISR85</value>
+		<value>GROUP_LH02P01DISR86</value>
+		<value>GROUP_LH02P01DISR87</value>
+	</util:list>
+
+</beans>

@@ -1,0 +1,13 @@
+.adacta-notice a:hover {
+	text-decoration: none;
+}
+
+.adacta-notice a {
+	color: blue;
+	text-decoration: underline;
+}
+
+.alfresco-share .sticky-wrapper p, .yui-overlay p {
+    padding-top: 10px;
+    padding-bottom: 3px;
+}

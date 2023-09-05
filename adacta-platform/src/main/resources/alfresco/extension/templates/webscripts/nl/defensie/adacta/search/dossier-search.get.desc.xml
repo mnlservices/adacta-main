@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>Search content</shortname>
+	<description>Supports the select2.ftl for displaying content</description>
+	<url>/nl/defensie/adacta/search/dossier-search?term={q}</url>
+	<family>Adacta</family>
+	<format default="json" />
+	<authentication>user</authentication>
+</webscript>

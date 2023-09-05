@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Beheer create dossier</shortname>
+  <url>/beheer/create-dossier</url>
+  <authentication>user</authentication>
+  <format default="html"></format>
+  <family>ADACTA beheer</family>
+</webscript>

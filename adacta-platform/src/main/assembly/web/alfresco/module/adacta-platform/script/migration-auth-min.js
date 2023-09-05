@@ -1,0 +1,1 @@
+function main(){var a=actions.create("adactaMigrationUserFolderSynchronizer");a.parameters.step=10000;a.execute(search.luceneSearch('PATH:"/app:company_home"')[0])}main();

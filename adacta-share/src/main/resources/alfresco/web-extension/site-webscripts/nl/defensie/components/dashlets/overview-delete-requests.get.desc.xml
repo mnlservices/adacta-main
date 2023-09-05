@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Overview delete requests</shortname>
+   <description>Overview delete requests</description>
+   <family>dashlet</family>
+   <url>/components/dashlets/overview-delete-requests</url>
+</webscript>

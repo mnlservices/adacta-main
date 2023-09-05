@@ -1,0 +1,9 @@
+<webscript kind="org.alfresco.repository.content.stream">
+  <shortname>Get notice.html content</shortname>
+  <description></description>
+  <url>/nl/defensie/adacta/notice</url>
+  <format default="json" />
+  <authentication>user</authentication>
+  <transaction allow="readonly">required</transaction>
+   <family>Adacta</family>
+</webscript>

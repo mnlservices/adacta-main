@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>Get User Properties</shortname>
+	<description>Provides properties of given user (including custom properties)</description>
+	<url>/nl/defensie/adacta/user/{userName}</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<family>Adacta</family>
+</webscript>

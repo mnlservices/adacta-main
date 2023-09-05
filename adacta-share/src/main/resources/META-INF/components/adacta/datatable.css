@@ -1,0 +1,340 @@
+/* Users Tool */
+.adacta-datatable {
+	margin: 16px 10px 10px;
+}
+
+.adacta-datatable a, .adacta-datatable a:visited {
+	cursor: pointer;
+}
+
+.adacta-datatable a:hover {
+	text-decoration: underline;
+}
+
+.adacta-datatable .title {
+	font-size: 123.1%;
+	font-weight: bold;
+	padding-bottom: 0.5em;
+}
+
+.adacta-datatable .align-right {
+	text-align: right;
+}
+
+.adacta-datatable .align-center {
+	text-align: center !important;
+}
+
+.adacta-datatable .separator {
+	margin-bottom: 0.8em;
+}
+
+.adacta-datatable .search-bar {
+	padding: 0.4em;
+}
+
+.adacta-datatable .search-button {
+	margin-top: -2.2em;
+	padding-left: 16em;
+}
+
+.adacta-datatable .unread-button {
+	margin-bottom: 1em;
+	padding-left: 0em;
+}
+
+.adacta-datatable .unread-button button {
+	background: transparent url(../documentlibrary/actions/view-in-explorer-16.png)
+		no-repeat 10px 5px;
+	padding-left: 30px;
+}
+
+.adacta-datatable .open-in-tabs button {
+	background: transparent url(../documentlibrary/actions/document-view-content-tab-16.png)
+		no-repeat 10px 5px;
+	padding-left: 30px;
+}
+
+.adacta-datatable .deselect-all button {
+	background: transparent url(../documentlibrary/actions/approve-16.png)
+	no-repeat 10px 5px;
+	padding-left: 30px;
+}
+
+.adacta-datatable .import-button {
+	margin-top: -2.2em;
+	padding-left: 0em;
+}
+
+.adacta-datatable .import-button button {
+	background: transparent url(../documentlibrary/images/upload-16.png)
+		no-repeat 12px 4px;
+	padding-left: 30px;
+}
+
+.adacta-datatable .selected-items-button {
+	margin-top: -2.1em;
+	padding-left: 33em;
+}
+
+.adacta-datatable .select-button {
+	margin-top: -2.2em;
+	padding-left: 26em;
+}
+
+.adacta-datatable .selected-items-button-child {
+	margin-top: -2.2em;
+	padding-left: 8em;
+}
+
+.adacta-datatable .select-button-child {
+	margin-top: -2.2em;
+	padding-left: 1em;
+}
+
+.adacta-datatable .selected-items-button-import {
+	margin-top: -2.2em;
+	padding-left: 17em;
+}
+
+.adacta-datatable .select-button-import {
+	margin-top: -2.1em;
+	padding-left: 10em;
+}
+
+.adacta-datatable .header-menu {
+	padding-top: 28px;
+}
+
+.adacta-datatable .search-text input {
+	padding: 3px;
+}
+
+.adacta-datatable .search-main {
+	border: 1px solid #D7D7D7;
+}
+
+.adacta-datatable .results table {
+	width: 100%;
+	border: none;
+}
+
+.adacta-datatable .yui-dt td {
+	border-bottom: 1px solid #D7D7D7;
+	border-right: medium none;
+}
+
+.adacta-datatable .yui-dt-last td {
+	border-bottom: medium none;
+}
+
+.adacta-datatable tr.yui-dt-odd, .adacta-datatable tr.yui-dt-even {
+	background-color: #ffffff;
+	cursor: auto;
+}
+
+.adacta-datatable tr:hover td {
+	background:#F5F5F5 !important;
+}
+
+.adacta-datatable td.yui-dt-asc, .adacta-datatable td.yui-dt-desc {
+	background-color: #ffffff !important;
+}
+
+.adacta-datatable tr.yui-dt-selected td {
+	background-color: #fff;
+	color: #333333 !important;
+}
+
+.adacta-datatable .indicator {
+	margin-left: -4px;
+	padding-top: 1px;
+}
+
+.adacta-datatable .view-main {
+	border: 1px solid #D7D7D7;
+	padding-bottom: 1em;
+}
+
+.adacta-datatable .edituser-button {
+	float: right;
+}
+
+.adacta-datatable .deleteuser-button {
+	float: right;
+}
+
+.adacta-datatable .header-bar {
+	height: 1.1em;
+	padding: 0.3em;
+	margin: 1.0em;
+	background-color: #eee;
+	border-bottom: 2px solid #f0f3f4;
+	font-weight: bold;
+	font-size: 116%;
+}
+
+.adacta-datatable .photo-row {
+	margin-left: 4em;
+	padding: 0.333em;
+	height: 7em;
+}
+
+.adacta-datatable .photo {
+	padding: 0.5em;
+	float: left;
+}
+
+.adacta-datatable .bio-row {
+	padding: 0em 1.5em 0.3em 11.75em;
+}
+
+.adacta-datatable .field-row {
+	padding: 0.333em;
+}
+
+.adacta-datatable .name-label {
+	margin-left: 96px;
+	font-size: 123.1%;
+	line-height: 1.7em;
+}
+
+.adacta-datatable .field-label {
+	margin-left: 96px;
+	line-height: 1.5em;
+}
+
+.adacta-datatable .field-label-right {
+	clear: left;
+	display: block;
+	padding-right: 0.8em;
+	width: 9em;
+	margin-left: 2em;
+	text-align: right;
+	font-weight: bold;
+}
+
+.adacta-datatable .field-value {
+	float: left;
+	margin-left: 12em;
+	margin-top: -1.2em;
+}
+
+.adacta-datatable .field-label-right-long {
+	clear: left;
+	display: block;
+	padding-right: 0.8em;
+	width: 13em;
+	margin-left: 2em;
+	text-align: right;
+	font-weight: bold;
+}
+
+.adacta-datatable .field-value-long {
+	float: left;
+	margin-left: 16em;
+	margin-top: -1.2em;
+}
+
+.adacta-datatable .create-main {
+	border: 1px solid #D7D7D7;
+	padding-bottom: 1em;
+	margin-bottom: 1.5em;
+}
+
+.adacta-datatable .update-main {
+	border: 1px solid #D7D7D7;
+	padding-bottom: 1em;
+	margin-bottom: 1.5em;
+}
+
+.adacta-datatable .crud-label {
+	margin-left: 1.5em;
+	line-height: 1.5em;
+}
+
+.adacta-datatable .crud-input {
+	margin-left: 1.5em;
+}
+
+.adacta-datatable .crud-input-quota {
+	margin-left: 1.5em;
+	width: 6em;
+}
+
+.adacta-datatable select {
+	width: 4em;
+}
+
+.adacta-datatable .left {
+	float: left;
+}
+
+.adacta-datatable .small {
+	margin-left: 1.75em;
+	font-size: 85%;
+}
+
+.adacta-datatable .update-photo-row {
+	margin-left: 1.5em;
+	padding: 0.333em;
+	height: 5em;
+}
+
+.adacta-datatable .updateuser-clearphoto-button {
+	margin-top: 1em;
+	margin-left: 6em;
+}
+
+.adacta-datatable .grouppicker-row {
+	padding-left: 1.2em;
+	margin-top: -1.5em;
+	max-width: 50em;
+}
+
+.adacta-datatable .groupselection-row {
+	padding-left: 2em;
+	padding-bottom: 0.5em;
+}
+
+.adacta-datatable .group-item {
+	background: transparent url(../images/remove-icon-16.png) no-repeat 0px
+		0px;
+	line-height: 1.7;
+	margin-right: 12px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+
+.adacta-datatable .yui-button .first-child {
+	background: transparent;
+}
+
+.adacta-datatable .deauthorize-enabled {
+	background: url(../images/deauthorize-user-icon-16.png) no-repeat center;
+}
+
+.adacta-datatable .deauthorize-disabled {
+	background: url(../images/deauthorize-disabled-user-icon-16.png)
+		no-repeat center;
+}
+
+.adacta-datatable .reauthorize-enabled {
+	background: url(../images/reauthorize-user-icon-16.png) no-repeat center;
+}
+
+.adacta-datatable .paginator {
+	text-align: center;
+}
+
+.adacta-datatable .alfresco-datatable thead {
+	display: table-header-group;
+}
+
+.adacta-doc-previewer {
+	background-color: #ffffff;
+	border-radius: 3px;
+	border: 1px solid grey;
+	color: #000000;
+	padding: 4px;
+}

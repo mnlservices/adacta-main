@@ -1,0 +1,723 @@
+<extension>
+	<modules>
+
+		<!-- Main Adacta module for adding extensions. -->
+
+		<module>
+			<id>Adacta Module - Context</id>
+			<description>Adacta module extensions</description>
+			<version>1.0</version>
+			<auto-deploy>true</auto-deploy>
+
+			<configurations>
+
+				<config evaluator="string-compare" condition="AdactaSearch">
+					<adacta-search>
+						<forms>
+							<form id="search" labelId="search.form.label.ada_document" descriptionId="search.form.desc.ada_document">ada:document</form>
+							<form id="search" labelId="search.form.label.ada_dossier" descriptionId="search.form.desc.ada_dossier">ada:dossier</form>
+						</forms>
+					</adacta-search>
+				</config>
+
+				<config evaluator="string-compare" condition="DocLibActions">
+					<actions>
+						<action id="adactaEditDocument" icon="document-edit-metadata" type="javascript" label="actions.adactaEditDocument.label">
+							<param name="function">onActionEditDocument</param>
+							<permissions>
+								<permission allow="true">Write</permission>
+							</permissions>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+						</action>
+
+						<action id="adactaMoveToPersonnelFile" label="actions.adactaMoveToPersonnelFile.label" type="javascript" icon="link">
+							<param name="function">onActionRedirectFormDialog</param>
+							<param name="itemKind">action</param>
+							<param name="itemId">adactaMoveToPersonnelFile</param>
+							<param name="destination">{node.nodeRef}</param>
+							<param name="mode">create</param>
+							<param name="successMessage">actions.adactaMoveToPersonnelFile.success</param>
+							<param name="failureMessage">actions.adactaMoveToPersonnelFile.failure</param>
+							<!-- <permissions> <permission allow="true">Write</permission> </permissions> -->
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator>evaluator.adacta.isInvoerderOrBeheerder</evaluator>
+						</action>
+
+						<action id="adactaMarkDocumentToDelete" label="actions.adactaMarkDocumentToDelete.label" type="javascript" icon="document-delete">
+							<param name="function">onActionFormDialog</param>
+							<param name="itemKind">action</param>
+							<param name="itemId">adactaMarkDocumentToDelete</param>
+							<param name="destination">{node.nodeRef}</param>
+							<param name="mode">create</param>
+							<param name="successMessage">actions.adactaMarkDocumentToDelete.success</param>
+							<param name="failureMessage">actions.adactaMarkDocumentToDelete.failure</param>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator negate="true">evaluator.adacta.hasDestroyCode</evaluator>
+							<evaluator>evaluator.adacta.isInvoerderOrBeheerder</evaluator>
+							<evaluator>evaluator.adacta.employeeBsnNotNull</evaluator>
+						</action>
+
+						<action id="adactaUnMarkDocumentToDelete" label="actions.adactaUnMarkDocumentToDelete.label" type="javascript" icon="document-delete">
+							<param name="function">onActionFormDialog</param>
+							<param name="itemKind">action</param>
+							<param name="itemId">adactaUnMarkDocumentToDelete</param>
+							<param name="destination">{node.nodeRef}</param>
+							<param name="mode">create</param>
+							<param name="successMessage">actions.adactaUnMarkDocumentToDelete.success</param>
+							<param name="failureMessage">actions.adactaUnMarkDocumentToDelete.failure</param>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator>evaluator.adacta.hasDestroyCode</evaluator>
+							<evaluator>evaluator.adacta.isInvoerderOrBeheerder</evaluator>
+							<evaluator>evaluator.adacta.employeeBsnNotNull</evaluator>
+						</action>
+
+						<action id="onActionSelectedItemsNext" icon="next" type="javascript" label="actions.adactaSelectedItemsNext.label">
+							<param name="function">onActionSelectedItemsNext</param>
+							<permissions>
+								<permission allow="true">Write</permission>
+							</permissions>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator>evaluator.adacta.hasNextSelectedItems</evaluator>
+						</action>
+
+						<action id="onActionSelectedItemsPrevious" icon="prev" type="javascript" label="actions.adactaSelectedItemsPrevious.label">
+							<param name="function">onActionSelectedItemsPrevious</param>
+							<permissions>
+								<permission allow="true">Write</permission>
+							</permissions>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator>evaluator.adacta.hasPreviousSelectedItems</evaluator>
+						</action>
+
+						<action id="adactaDeleteDocument" label="actions.document.delete" type="javascript" icon="document-delete">
+							<param name="function">onActionDeleteDocumentDialog</param>
+							<permissions>
+								<permission allow="true">Delete</permission>
+							</permissions>
+							<evaluator>evaluator.adacta.isDocumentType</evaluator>
+							<evaluator negate="true">evaluator.adacta.employeeBsnNotNull</evaluator>
+						</action>
+
+						<!-- Third party tools -->
+
+						<action id="de_fme_jsconsole-open-in-jsconsole">
+							<evaluator>evaluator.adacta.isAdmin</evaluator>
+						</action>
+
+						<!-- Hide Default Actions -->
+
+						<action id="document-view-content">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-cancel-editing-unlock">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-upload-new-version">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-edit-offline">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-copy-to">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-copy-to">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-move-to">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-delete">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-manage-granular-permissions">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-manage-repo-permissions">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-manage-aspects">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-change-type">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-cloud-sync">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-take-ownership">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-assign-workflow">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+						<action id="document-edit-metadata">
+							<evaluator negate="true">evaluator.adacta.isDocumentType</evaluator>
+						</action>
+
+					</actions>
+
+					<actionGroups>
+						<actionGroup id="document-browse">
+						</actionGroup>
+
+						<actionGroup id="document-details">
+							<!-- Adacta -->
+							<action index="800" subgroup="80" id="adactaDeleteDocument" />
+
+							<action index="900" subgroup="90" id="adactaEditDocument" />
+							<action index="910" subgroup="90" id="adactaMarkDocumentToDelete" />
+							<action index="911" subgroup="90" id="adactaUnMarkDocumentToDelete" />
+							<action index="920" subgroup="90" id="adactaMoveToPersonnelFile" />
+
+							<action index="930" subgroup="90" id="onActionSelectedItemsNext" />
+							<action index="931" subgroup="90" id="onActionSelectedItemsPrevious" />
+						</actionGroup>
+					</actionGroups>
+				</config>
+
+				<config evaluator="string-compare" condition="WebFramework">
+					<web-framework>
+						<dojo-pages>
+							<packages>
+								<package name="select2" location="js/select2" main="select2.min" />
+							</packages>
+						</dojo-pages>
+					</web-framework>
+				</config>
+
+				<config>
+					<forms>
+						<dependencies>
+							<css src="/css/preview.css" />
+							<css src="/js/select2/select2.min.css" />
+							<js src="/components/form/form-extension.js" />
+
+							<!-- Validations -->
+							<js src="/components/form/future-date.js" />
+							<js src="/components/form/update-doc-subject.js" />
+							<js src="/components/form/update-doc-date.js" />
+							<js src="/components/form/update-doc-category.js" />
+						</dependencies>
+					</forms>
+				</config>
+
+				<config evaluator="string-compare" condition="DocLibCustom">
+					<dependencies>
+						<js src="components/documentlibrary/action-edit-document.js" />
+						<js src="components/documentlibrary/action-selected-items-next.js" />
+						<js src="components/documentlibrary/action-selected-items-previous.js" />
+						<js src="components/documentlibrary/onActionRedirectFormDialog.js" />
+						<js src="components/documentlibrary/onActionDeleteDocumentDialog.js" />
+					</dependencies>
+				</config>
+
+			</configurations>
+
+			<components>
+
+				<!-- Enable adacta toolbar. -->
+
+				<component>
+					<scope>global</scope>
+					<region-id>share-header</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="adacta-toolbar">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="adacta.document.component.evaluator" />
+									</evaluators>
+									<url>/components/adacta/toolbar</url>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Enable selected items progress component. -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-actions</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="adacta-selected-items">
+							<evaluations>
+								<evaluation id="adacta-selected-items">
+									<evaluators>
+										<evaluator type="adacta.selectedItems.component.evaluator" />
+									</evaluators>
+									<url>/components/document-details/selected-items</url>
+									<properties>
+										<nodeRef>{nodeRef}</nodeRef>
+									</properties>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Disable node header links for document details. -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>node-header</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="adacta.document.component.evaluator" />
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<url>/components/node-details/node-header</url>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Disable node header links for edit document. -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>node-header</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="adacta.document.component.evaluator" />
+									</evaluators>
+									<url>/components/node-details/node-header</url>
+									<properties>
+										<rootPage>context/adacta/edit-document</rootPage>
+										<showPath>false</showPath>
+										<showFavourite>false</showFavourite>
+										<showLikes>false</showLikes>
+										<showComments>false</showComments>
+										<showQuickShare>false</showQuickShare>
+										<showDownload>true</showDownload>
+										<showOnlyLocation>false</showOnlyLocation>
+										<displayName>false</displayName>
+										<showItemModifier>false</showItemModifier>
+									</properties>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Disable edit document page components -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-actions</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-tags</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-links</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-sync</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-sync</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-workflows</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-versions</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>comments</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-attachments</region-id>
+					<source-id>edit-document</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Show extra form on document details only for admin. -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-metadata</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="adacta-admin-form">
+							<evaluations>
+								<evaluation id="adacta-admin-form">
+									<evaluators>
+										<evaluator type="adacta.document.component.evaluator" />
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS,GROUP_ADACTA_BEHEERDER</groups>
+											</params>
+										</evaluator>
+									</evaluators>
+									<url>/components/document-details/admin-form</url>
+									<properties>
+										<nodeRef>{nodeRef}</nodeRef>
+									</properties>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- Disable components in document details page. -->
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-tags</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-links</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-sync</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-sync</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-workflows</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-versions</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS,GROUP_ADACTA_BEHEERDER</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>comments</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<component>
+					<scope>template</scope>
+					<region-id>document-attachments</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="default">
+							<evaluations>
+								<evaluation id="adacta">
+									<evaluators>
+										<evaluator type="group.component.evaluator">
+											<params>
+												<groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+												<negate>true</negate>
+											</params>
+										</evaluator>
+									</evaluators>
+									<render>false</render>
+								</evaluation>
+							</evaluations>
+						</sub-component>
+					</sub-components>
+				</component>
+
+			</components>
+
+		</module>
+
+		<!-- Module for enabling the Adacta menu. -->
+
+		<module>
+			<id>Adacta Module - Menu</id>
+			<version>1.0</version>
+			<auto-deploy>true</auto-deploy>
+			<customizations>
+				<customization>
+					<targetPackageRoot>org.alfresco.share.header</targetPackageRoot>
+					<sourcePackageRoot>nl.defensie.share.header</sourcePackageRoot>
+				</customization>
+			</customizations>
+		</module>
+		
+        <module>
+            <id>Share Site Creators</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <evaluator type="group.module.evaluator">
+                <params>
+                    <groups>GROUP_ALFRESCO_ADMINISTRATORS</groups>
+                    <groupRelation>AND</groupRelation>
+                    <negate>true</negate>
+                </params>
+            </evaluator>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.dashlets</targetPackageRoot>
+                    <sourcePackageRoot>nl.defensie.components.dashlets</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+
+		<module>
+            <id>disable-spellcheck</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <evaluator type="default.extensibility.evaluator" />
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.share.pages.faceted-search</targetPackageRoot>
+                    <sourcePackageRoot>org.alfresco.share.pages.faceted-search.customization</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+
+	</modules>
+</extension>

@@ -1,0 +1,9 @@
+<webscript>
+	<shortname>Adacta Global Properties</shortname>
+	<description>Get some global Adacta settings.</description>
+	<url>/nl/defensie/adacta/globalproperties</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<transaction allow="readonly">required</transaction>
+	<family>Adacta</family>
+</webscript>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<template-instance>
+   <template-type>nl/defensie/view-dossier</template-type>
+   <properties>
+      <pageFamily>adacta</pageFamily>
+      <container>adacta</container>
+   </properties>
+   <components>
+      
+      <!-- Custom Code -->
+      <component>
+         <region-id>doclib-custom</region-id>
+         <url>/components/adacta/view-dossier</url>
+      </component>
+
+   </components>
+</template-instance>

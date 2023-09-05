@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>Adacta view dossier page</shortname>
+  <description>Adacta view dossier page</description>
+  <url>/components/adacta/view-dossier</url>
+</webscript>

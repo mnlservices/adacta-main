@@ -1,0 +1,1 @@
+if(document&&document.properties.content.mimetype!="application/pdf"){throw"Unsupported file format"};

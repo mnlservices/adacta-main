@@ -1,0 +1,113 @@
+<alfresco-config>
+
+	<!-- ####### -->
+	<!-- ACTIONS -->
+	<!-- ####### -->
+
+	<config evaluator="string-compare" condition="adactaApproveDeleteRequest">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="label" />
+				</field-visibility>
+				<appearance>
+					<field id="label" label-id="actions.adactaApproveDeleteRequest.description">
+						<control template="/nl/defensie/components/form/controls/label.ftl">
+							<control-param name="style">display:table; margin:0 auto; width:400px</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="string-compare" condition="adactaDeleteNode">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="label" />
+				</field-visibility>
+				<appearance>
+					<field id="label" label-id="actions.adactaDeleteNode.description">
+						<control template="/nl/defensie/components/form/controls/label.ftl">
+							<control-param name="style">display:table; margin:0 auto;</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="string-compare" condition="adactaMoveToPersonnelFile">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="label" />
+					<show id="personnel-file" />
+					<show id="is-batch" />
+				</field-visibility>
+				<appearance>
+					<set id="adactaOptional" label-id="set.optional" appearance="panel" />
+
+					<field id="label" label-id="actions.adactaMoveToPersonnelFile.description">
+						<control template="/nl/defensie/components/form/controls/label.ftl">
+							<control-param name="style">display:table;width:500px</control-param>
+						</control>
+					</field>
+					<field id="personnel-file" label-id="label.employeeNumber">
+						<control template="/nl/defensie/components/form/controls/select4.ftl">
+							<control-param name="jsonGetUrl">nl/defensie/adacta/search/dossier-search</control-param>
+							<control-param name="maximumSelected">1</control-param>
+							<control-param name="minimumInputLength">2</control-param>
+							<control-param name="width">640px</control-param>
+						</control>
+					</field>
+					<field id="is-batch" label-id="actions.adactaMoveToPersonnelFile.isBatch" set="adactaOptional" help-id="help.is-batch">
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="string-compare" condition="adactaMarkDocumentToDelete">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="label" />
+					<show id="code" />
+				</field-visibility>
+				<appearance>
+					<field id="label" label-id="actions.adactaMarkDocumentToDelete.description">
+						<control template="/nl/defensie/components/form/controls/label.ftl">
+							<control-param name="style">display:table;width:500px</control-param>
+						</control>
+					</field>
+					<field id="code" label-id="actions.adactaMarkDocumentToDelete.code">
+						<control template="controls/selectone.ftl">
+							<control-param name="options">V1|{v1},V2|{v2},V3|{v3},V4|{v4},V5|{v5},V6|{v6},V7|{v7},V8|{v8}</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="string-compare" condition="adactaUnMarkDocumentToDelete">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="label" />
+				</field-visibility>
+				<appearance>
+					<field id="label" label-id="actions.adactaUnMarkDocumentToDelete.description">
+						<control template="/nl/defensie/components/form/controls/label.ftl">
+							<control-param name="style">display:table; margin:0 auto;</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+</alfresco-config>

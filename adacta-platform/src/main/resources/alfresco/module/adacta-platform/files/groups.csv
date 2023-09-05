@@ -1,0 +1,61 @@
+cm:authorityName;cm:authorityDisplayName
+RD0000080000;CDC (Afdeling-rolgroep)
+RD0000080001;CDC/DPOD (Afdeling-rolgroep)
+RD0000080002;CDC/DPOD/DCR (Afdeling-rolgroep)
+RD0000080003;CDC/DPOD/DCR/RCM (Afdeling-rolgroep)
+RD0000080004;CDC/DPOD/DCR/RCM/OSTGP (Afdeling-rolgroep)
+RD0000080005;CDC/DPOD/DCHR (Afdeling-rolgroep)
+RD0000080006;CDC/DPOD/DCHR/IC (Afdeling-rolgroep)
+RD0000080007;DMO (Afdeling-rolgroep)
+RD0000080008;DMO/OPS (Afdeling-rolgroep)
+RD0000080009;DMO/OPS/TOO (Afdeling-rolgroep)
+RD0000080010;DMO/OPS/TOO/UFB (Afdeling-rolgroep)
+RD0000080011;CDC/DGO (Afdeling-rolgroep)
+RD0000080012;CDC/DGO/EGB (Afdeling-rolgroep)
+RD0000080013;CDC/DGO/EGB/REG WST (Afdeling-rolgroep)
+RD0000080014;CDC/DGO/EGB/REG WST/GC DHG (Afdeling-rolgroep)
+RD0000080015;CLAS (Afdeling-rolgroep)
+RD0000080016;CLAS/OOCL (Afdeling-rolgroep)
+RD0000080017;CLAS/OOCL/OG CLAS (Afdeling-rolgroep)
+RD0000080018;CLAS/OOCL/OG CLAS/RB GLDLND (Afdeling-rolgroep)
+RD0000080019;CLAS/OOCL/OG CLAS/RB GLDLND/PARKET (Afdeling-rolgroep)
+R00563357;Mdw Clientenadministratie, CDC/DPOD/DCR/RCM/OSTGP (Arbeidsplaats-rolgroep)
+R00565642;Teamleider IC, CDC/DPOD/DCHR/IC (Arbeidsplaats-rolgroep)
+R00520215;Functioneel beheerder, DMO/OPS/TOO/UFB (Arbeidsplaats-rolgroep)
+R00516218;Ondersteuner GZHC/Praktijkmngr, CDC/DGO/EGB/REG WST/GC DHG (Arbeidsplaats-rolgroep)
+R00058489;Secretaris Vbdoff JZ Krm, CLAS/OOCL/OG CLAS/RB GLDLND/PARKET (Arbeidsplaats-rolgroep)
+LH02P01DISF01;IV: DIS: P: Personele Informatie: Functie Indexeren
+LH02P01DISF02;IV: DIS: P: Personele Informatie: Functie Importeren en Indexeren
+LH02P01DISF03;IV: DIS: P: Personele Informatie: Functie Raadplegen
+LH02P01DISF04;IV: DIS: P: Personele Informatie: Functie Annoteren
+LH02P01DISF05;IV: DIS: P: Personele Informatie: Functie Beheren
+LH02P01DISF06;IV: DIS: P: Personele Informatie: Functie Scannen P&O
+LH02P01DISF07;IV: DIS: P: Personele Informatie: Functie Scannen Medisch
+LH02P01DISF08;IV: DIS: P: Personele Informatie: Functie Scannen BGZ-dossier
+LH02P01DISR01;IV: DIS: P: Personele Informatie: Rubriek Formatie en Bezetting
+LH02P01DISR02;IV: DIS: P: Personele Informatie: Rubriek Werving en selectie
+LH02P01DISR03;IV: DIS: P: Personele Informatie: Rubriek Indiensttreding
+LH02P01DISR04;IV: DIS: P: Personele Informatie: Rubriek Inzetbaarheid
+LH02P01DISR05;IV: DIS: P: Personele Informatie: Rubriek Verlof & werk- en rusttijden
+LH02P01DISR06;IV: DIS: P: Personele Informatie: Rubriek Schorsen, horen, bezwaar en beroep
+LH02P01DISR07;IV: DIS: P: Personele Informatie: Rubriek (Her)plaatsen
+LH02P01DISR08;IV: DIS: P: Personele Informatie: Rubriek Uitzendingen
+LH02P01DISR09;IV: DIS: P: Personele Informatie: Rubriek Terugkoppeling functioneren
+LH02P01DISR10;IV: DIS: P: Personele Informatie: Rubriek Training en opleiding
+LH02P01DISR11;IV: DIS: P: Personele Informatie: Rubriek Bevorderen
+LH02P01DISR12;IV: DIS: P: Personele Informatie: Rubriek Opvolgingsplanning
+LH02P01DISR13;IV: DIS: P: Personele Informatie: Rubriek Kwalificatie- / loopbaanmanagement
+LH02P01DISR14;IV: DIS: P: Personele Informatie: Rubriek Belonen en erkennen
+LH02P01DISR15;IV: DIS: P: Personele Informatie: Rubriek Be�ndigen dienstverband
+LH02P01DISR16;IV: DIS: P: Personele Informatie: Rubriek Zorg en arbeid
+LH02P01DISR17;IV: DIS: P: Personele Informatie: Rubriek Voorlichting personeel
+LH02P01DISR18;IV: DIS: P: Personele Informatie: Rubriek Personeelsadministratie
+LH02P01DISR80;IV: DIS: P: Personele Informatie: Rubriek Gemeentezaken
+LH02P01DISR81;IV: DIS: P: Personele Informatie: MIVD
+LH02P01DISR82;IV: DIS: P: Personele Informatie: Management Development
+LH02P01DISR83;IV: DIS: P: Personele Informatie: Bijzondere eenheden
+LH02P01DISR84;IV: DIS: P: Personele Informatie: Medisch geheim
+LH02P01DISR85;IV: DIS: P: Personele Informatie: Geïntegreerde zorg
+LH02P01DISR86;IV: DIS: P: Personele Informatie: Arbodienst burger
+LH02P01DISR87;IV: DIS: P: Personele Informatie: BGZ-dossier
+LH02P01DISR99;IV: DIS: P: Personele Informatie: Rubriek Financiële processen

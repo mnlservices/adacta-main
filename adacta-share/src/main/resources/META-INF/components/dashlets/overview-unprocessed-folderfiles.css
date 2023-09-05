@@ -1,0 +1,77 @@
+.overview-unprocessed-folderfiles .align-right
+{
+   float: right;
+}
+
+.overview-unprocessed-folderfiles .ada-datatable table
+{
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: open sans,arial;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    height: 300px;
+    overflow-y: scroll;  
+}
+
+.overview-unprocessed-folderfiles .ada-datatable .yui-dt-last
+{
+    border-right: 0px;
+}
+
+.overview-unprocessed-folderfiles .paginator
+{
+   padding: 0.5em 0 1em 1.5em;
+}
+
+.overview-unprocessed-folderfiles .name
+{
+   font-size: 116%;
+   padding-bottom: 0.2em;
+}
+
+.overview-unprocessed-folderfiles .desc
+{
+   padding-bottom: 0.2em;
+}
+
+.overview-unprocessed-folderfiles .buttons
+{
+   padding-bottom: 1em;
+   padding-top: 0.5em;
+   text-align: center;
+}
+
+.overview-unprocessed-folderfiles .search-bar
+{
+   border-bottom: 1px solid #ccc;
+   height: 2.75em;
+   padding: 0.5em;
+}
+
+.overview-unprocessed-folderfiles .toolbar-widget
+{
+   float: left;
+   padding-top: 4px;
+}
+
+.overview-unprocessed-folderfiles .toolbar-action
+{
+   float: right;
+}
+
+.overview-unprocessed-folderfiles .alfresco-datatable .header-bar
+{
+   height: 1.1em;
+   padding: 0.3em;
+   margin: 1.0em;
+   background-color: #eee;
+   border-bottom: 2px solid #f0f3f4;
+   font-weight: bold;
+   font-size: 116%;
+}

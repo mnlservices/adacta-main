@@ -1,0 +1,25 @@
+# Check guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent this .yml configuration.
+image:
+  name: opensat/dev-openbuilder:java11
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        script: 
+          - mvn -batch-mode clean deploy
+
+  custom: # Pipelines that are triggered manually
+
+    perform-release:
+      - step:
+          caches:
+            - maven
+          script: 
+            - git config --global user.email "network@open.nl"
+            - git config --global user.name "DevTeam"
+            - mvn -batch-mode release:prepare -DskipTests -Darguments=-DskipTests -DscmCommentPrefix="[skip ci] " -Dusername=$GIT_USERNAME -Dpassword=$GIT_PASSWORD
+            - mvn -batch-mode release:perform -DskipTests -Darguments=-DskipTests -Dgoals=deploy
+ 

@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Overview index reports</shortname>
+   <description>Overview index reports</description>
+   <family>dashlet</family>
+   <url>/components/dashlets/overview-index-reports</url>
+</webscript>

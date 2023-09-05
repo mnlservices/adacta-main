@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+   <title>Adacta Edit Document</title>
+   <title-id>page.adactaEditDocument.title</title-id>
+   <description>Adacta Edit Document</description>
+   <description-id>page.adactaEditDocument.description</description-id>
+   <template-instance>edit-document</template-instance>
+   <authentication>user</authentication>
+</page>

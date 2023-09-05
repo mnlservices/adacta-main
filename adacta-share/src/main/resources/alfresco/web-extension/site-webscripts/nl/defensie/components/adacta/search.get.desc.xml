@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>Adacta search page</shortname>
+  <description>Adacta landing page from menu</description>
+  <url>/components/adacta/search</url>
+</webscript>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="adactaApproveDeleteRequest" class="nl.defensie.adacta.action.ApproveDeleteRequestActionExecuter" parent="action-executer" />
+	<bean id="adactaCreateIndexReport" class="nl.defensie.adacta.action.CreateIndexReportActionExecuter" parent="action-executer" />
+	<bean id="adactaDeleteNode" class="nl.defensie.adacta.action.DeleteNodeActionExecuter" parent="action-executer" />
+		
+	<bean id="adactaMoveToPersonnelFile" class="nl.defensie.adacta.action.MoveToPersonnelFileActionExecuter" parent="action-executer" />
+	<bean id="adactaMarkDocumentToDelete" class="nl.defensie.adacta.action.MarkDocumentToDeleteActionExecuter" parent="action-executer" />
+	<bean id="adactaUnMarkDocumentToDelete" class="nl.defensie.adacta.action.MarkDocumentToDeleteActionExecuter" parent="action-executer" />
+<!-- 	<bean id="adactaCheckPDFA" class="nl.defensie.adacta.action.schedule.CheckPDFAActionExecuter" parent="action-executer" />-->	
+
+	<!-- Scheduled actions -->
+	
+	<bean id="adactaDeleteMarkedDocuments" class="nl.defensie.adacta.action.schedule.DeleteMarkedDocumentsActionExecuter" parent="action-executer" />
+	<bean id="adactaImportWITDocuments" class="nl.defensie.adacta.action.schedule.ImportWITDocumentsActionExecuter" parent="action-executer" />
+	
+	<bean id="adactaDossierSynchronizer" class="nl.defensie.adacta.action.schedule.AdactaDossierSynchronizer" parent="action-executer" />
+	<bean id="rolesSync" class="nl.defensie.adacta.action.schedule.RolesSyncActionExecuter" parent="action-executer" />
+	<bean id="adactaArchive" class="nl.defensie.adacta.action.schedule.AdactaArchiveActionExecuter" parent="action-executer" />
+	
+	<util:list id="adactaExcludeUsers" value-type="java.lang.String">
+		<value>admin</value>
+		<value>guest</value>
+	</util:list>
+
+</beans>

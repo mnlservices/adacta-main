@@ -1,0 +1,9 @@
+<webscript>
+	<shortname>Adacta Setup</shortname>
+	<description>Supports Adacta configuration page for running configuration scripts and test scripts.</description>
+	<url>/nl/defensie/adacta/setup/{mode}</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<transaction>required</transaction>
+	<family>Adacta</family>
+</webscript>

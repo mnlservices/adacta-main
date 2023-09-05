@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+   <title>Adacta Index</title>
+   <title-id>page.adactaIndex.title</title-id>
+   <description>Adacta index page for documents and scan batches.</description>
+   <description-id>page.adactaIndex.description</description-id>
+   <template-instance>adacta-index</template-instance>
+   <authentication>user</authentication>
+</page>

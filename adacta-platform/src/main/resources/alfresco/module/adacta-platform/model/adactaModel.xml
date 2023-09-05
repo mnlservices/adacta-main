@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="ada:adactaModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<description>Adacta Model</description>
+	<author>iVent</author>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.defensie.nl/adacta/model/1.0" prefix="ada" />
+	</namespaces>
+
+	<constraints>
+
+		<constraint name="ada:statusConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Actief</value>
+					<value>Gesloten</value>
+				</list>
+			</parameter>
+		</constraint>
+
+	</constraints>
+
+	<types>
+
+		<type name="ada:dossier">
+			<parent>cm:folder</parent>
+			<mandatory-aspects>
+				<aspect>ada:employeeAspect</aspect>
+			</mandatory-aspects>
+		</type>
+
+		<type name="ada:document">
+			<parent>cm:content</parent>
+			<mandatory-aspects>
+				<aspect>ada:employeeAspect</aspect>
+				<aspect>ada:documentAspect</aspect>
+			</mandatory-aspects>
+		</type>
+
+	</types>
+
+
+	<aspects>
+
+		<aspect name="ada:employeeAspect">
+			<properties>
+				<property name="ada:employeeNumber">
+					<type>d:text</type>
+				</property>
+				<property name="ada:employeeName">
+					<type>d:text</type>
+				</property>
+				<property name="ada:employeeBsn">
+					<type>d:text</type>
+				</property>
+				<property name="ada:employeeMrn">
+					<type>d:text</type>
+				</property>
+				<property name="ada:employeeDepartment">
+					<type>d:text</type>
+				</property>
+				<property name="ada:employeeDpCodes">
+					<type>d:text</type>
+					<multiple>true</multiple>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="ada:documentAspect">
+			<properties>
+				<property name="ada:docCategory">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docSubject">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docDate">
+					<type>d:datetime</type>
+				</property>
+				<property name="ada:docReference">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docWorkDossier">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docCaseNumber">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docDateCreated">
+					<type>d:datetime</type>
+				</property>
+				<property name="ada:docMigId">
+					<type>d:text</type>
+				</property>
+				<property name="ada:docMigDate">
+					<type>d:datetime</type>
+				</property>
+				<property name="ada:docStatus">
+					<type>d:text</type>
+					<default>Actief</default>
+					<constraints>
+						<constraint ref="ada:statusConstraint" />
+					</constraints>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="ada:scanAspect">
+			<properties>
+				<property name="ada:scanEmployee">
+					<type>d:text</type>
+				</property>
+				<property name="ada:scanSeqNr">
+					<type>d:text</type>
+				</property>
+				<property name="ada:scanWaNr">
+					<type>d:text</type>
+				</property>
+				<property name="ada:scanBatchName">
+					<type>d:text</type>
+				</property>
+				<property name="ada:scanBatchSize">
+					<type>d:int</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- For AD synchronization purposes. -->
+
+		<aspect name="ada:synchronizationAspect">
+			<properties>
+				<property name="ada:employeeID">
+					<type>d:text</type>
+				</property>
+				<property name="ada:whenChanged">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- Used for determine permission on personnel files (dossier). -->
+
+		<aspect name="ada:rowSecClassAspect">
+			<properties>
+				<property name="ada:dpCode">
+					<type>d:text</type>
+				</property>
+				<property name="ada:dossierRef">
+					<type>d:noderef</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<!-- Root Aspects -->
+
+		<aspect name="ada:rootIndexAspect" />
+
+		<aspect name="ada:rootImportAspect" />
+
+		<aspect name="ada:rootReportAspect" />
+
+		<aspect name="ada:rootDossiersAspect" />
+
+	</aspects>
+
+</model>

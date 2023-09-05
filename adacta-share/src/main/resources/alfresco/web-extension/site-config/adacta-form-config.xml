@@ -1,0 +1,332 @@
+<alfresco-config>
+
+	<!-- ######## -->
+	<!-- DOCUMENT -->
+	<!-- ######## -->
+
+	<config evaluator="node-type" condition="ada:document">
+		<forms>
+			<!-- DEFAULT -->
+			<form>
+				<field-visibility>
+					<!-- DOCUMENT -->
+					<show id="ada:docCategory" />
+					<show id="ada:docSubject" />
+					<show id="cm:name" />
+					<show id="ada:docStatus" />
+					<show id="ada:docDate" />
+					<show id="ada:docReference" />
+					<show id="ada:docWorkDossier" />
+					<show id="ada:docCaseNumber" />
+					<show id="ada:docDateCreated" />
+
+					<!-- EMPLOYEE -->
+					<show id="ada:employeeBsn" for-mode="view" />
+					<show id="ada:employeeName" for-mode="view" />
+					<show id="ada:employeeNumber" for-mode="view" />
+					<show id="ada:employeeMrn" for-mode="view" />
+					<show id="ada:employeeDepartment" for-mode="view" />
+				</field-visibility>
+				<appearance>
+					<set id="adactaDocumentPanel" label-id="set.documentAspect" appearance="panel" />
+					<set id="adactaEmployeePanel" label-id="set.employeeAspect" appearance="panel" />
+
+					<!-- DOCUMENT -->
+					<field id="ada:docCategory" set="adactaDocumentPanel" help-id="help.ada_docCategory" mandatory="true">
+						<control template="/nl/defensie/components/form/controls/adacta-selectone.ftl">
+							<control-param name="jsonGetUrl">nl/defensie/adacta/selectone/categoryItem</control-param>
+							<control-param name="jsonGetId">name</control-param>
+							<control-param name="jsonGetName">msg</control-param>
+						</control>
+						<constraint-handlers>
+							<constraint type="VALIDATE" event="propertychange" validation-handler="Alfresco.forms.validation.updateDocSubject" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:docSubject" set="adactaDocumentPanel" help-id="help.ada_docSubject" mandatory="true">
+						<control template="/nl/defensie/components/form/controls/adacta-selectone.ftl">
+							<control-param name="jsonGetUrl">nl/defensie/adacta/selectone/subjectItem</control-param>
+							<control-param name="jsonGetId">name</control-param>
+							<control-param name="showList">false</control-param>
+						</control>
+					</field>
+					<field id="cm:name" set="adactaDocumentPanel" read-only="true" />
+					<field id="ada:docStatus" set="adactaDocumentPanel" help-id="help.ada_docStatus">
+						<control template="/org/alfresco/components/form/controls/info.ftl" />
+					</field>
+					<field id="ada:docDate" set="adactaDocumentPanel" help-id="help.ada_docDate" mandatory="true">
+						<control template="/nl/defensie/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+						</control>
+						<constraint-handlers>
+							<constraint type="UPDATE_DOC_DATE" validation-handler="Alfresco.forms.validation.updateDocDate" message-id="validate.doc_date" />
+							<constraint type="VALIDATE_FUTURE_DATE" event="propertychange" validation-handler="Alfresco.forms.validation.futureDate" message-id="validate.future_date" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:docReference" set="adactaDocumentPanel" help-id="help.ada_docReference">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:docWorkDossier" set="adactaDocumentPanel" help-id="help.ada_docWorkDossier">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:docCaseNumber" set="adactaDocumentPanel" help-id="help.ada_docCaseNumber">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:docDateCreated" set="adactaDocumentPanel" help-id="help.ada_docDateCreated" read-only="true">
+						<control template="/nl/defensie/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+						</control>
+					</field>
+
+					<!-- EMPLOYEE -->
+					<field id="ada:employeeBsn" set="adactaEmployeePanel" help-id="help.ada_employeeBsn">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:employeeName" set="adactaEmployeePanel" help-id="help.ada_employeeName">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:employeeNumber" set="adactaEmployeePanel" help-id="help.ada_employeeNumber">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:employeeMrn" set="adactaEmployeePanel" help-id="help.ada_employeeMrn">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="ada:employeeDepartment" set="adactaEmployeePanel" help-id="help.ada_employeeDepartment">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl" />
+					</field>
+				</appearance>
+			</form>
+
+			<!-- Only for (Adacta) admins -->
+
+			<form id="admin-form">
+				<field-visibility>
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+				</field-visibility>
+				<appearance>
+					<set id="adactaGeneralPanel" label-id="set.general" appearance="panel" />
+
+					<field id="cm:creator" set="adactaGeneralPanel" />
+					<field id="cm:created" set="adactaGeneralPanel" />
+					<field id="cm:modifier" set="adactaGeneralPanel" />
+					<field id="cm:modified" set="adactaGeneralPanel" />
+				</appearance>
+			</form>
+
+		</forms>
+	</config>
+
+	<!-- ####### -->
+	<!-- DOSSIER -->
+	<!-- ####### -->
+
+	<config evaluator="node-type" condition="ada:dossier">
+		<forms>
+			<!-- DEFAULT -->
+			<form>
+				<field-visibility>
+					<!-- EMPLOYEE -->
+					<show id="ada:employeeBsn" for-mode="view" />
+					<show id="ada:employeeName" for-mode="view" />
+					<show id="ada:employeeNumber" for-mode="view" />
+					<show id="ada:employeeMrn" for-mode="view" />
+					<show id="ada:employeeDepartment" for-mode="view" />
+					<show id="ada:employeeDpCodes" for-mode="view" />
+					<!-- GENERAL -->
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+				</field-visibility>
+				<appearance>
+					<set id="adactaEmployeePanel" label-id="set.employeeAspect" appearance="panel" />
+					<set id="adactaGeneralPanel" label-id="set.general" appearance="panel" />
+
+					<!-- EMPLOYEE -->
+					<field id="ada:employeeBsn" set="adactaEmployeePanel" help-id="help.ada_employeeBsn" />
+					<field id="ada:employeeName" set="adactaEmployeePanel" help-id="help.ada_employeeName" />
+					<field id="ada:employeeNumber" set="adactaEmployeePanel" help-id="help.ada_employeeNumber" />
+					<field id="ada:employeeMrn" set="adactaEmployeePanel" help-id="help.ada_employeeMrn" />
+					<field id="ada:employeeDepartment" set="adactaEmployeePanel" help-id="help.ada_employeeDepartment" />
+					<field id="ada:employeeDpCodes" set="adactaEmployeePanel" />
+
+					<!-- GENERAL -->
+					<field id="cm:creator" set="adactaGeneralPanel" />
+					<field id="cm:created" set="adactaGeneralPanel" />
+					<field id="cm:modifier" set="adactaGeneralPanel" />
+					<field id="cm:modified" set="adactaGeneralPanel" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+
+	<!-- ####### -->
+	<!-- FOLDER -->
+	<!-- ####### -->
+
+	<config evaluator="node-type" condition="cm:folder">
+		<forms>
+
+			<form id="scanbatch">
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+
+					<show id="cm:creator" for-mode="view" />
+					<show id="cm:created" for-mode="view" />
+					<show id="cm:modifier" for-mode="view" />
+					<show id="cm:modified" for-mode="view" />
+
+					<!-- emailserver:aliasable aspect -->
+					<show id="emailserver:alias" />
+				</field-visibility>
+				<appearance>
+					<field id="cm:name" read-only="true">
+						<control>
+							<control-param name="maxLength">255</control-param>
+						</control>
+					</field>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="cm:description">
+						<control>
+							<control-param name="activateLinks">true</control-param>
+						</control>
+					</field>
+
+					<set id="cm:folder2col" template="/org/alfresco/components/form/2-column-set.ftl" />
+					<field set="cm:folder2col" id="cm:creator" />
+					<field set="cm:folder2col" id="cm:created" />
+					<field set="cm:folder2col" id="cm:modifier" />
+					<field set="cm:folder2col" id="cm:modified" />
+				</appearance>
+			</form>
+
+		</forms>
+	</config>
+
+	<!-- ###### -->
+	<!-- SEARCH -->
+	<!-- ###### -->
+
+	<config evaluator="model-type" condition="ada:dossier">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="ada:employeeNumber" />
+					<show id="ada:employeeName" />
+					<show id="ada:employeeBsn" />
+					<show id="ada:employeeMrn" />
+				</field-visibility>
+				<appearance>
+					<field id="ada:employeeNumber" label-id="label.employeeNumber">
+						<control template="/nl/defensie/components/form/controls/number.ftl" />
+					</field>
+					<field id="ada:employeeName" label-id="label.employeeName">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl">
+							<control-param name="style">text-transform: capitalize;</control-param>
+						</control>
+					</field>
+					<field id="ada:employeeBsn" label-id="label.employeeBsn">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl">
+							<control-param name="default">NLD-</control-param>
+						</control>
+					</field>
+					<field id="ada:employeeMrn" label-id="label.employeeMrn">
+						<control template="/nl/defensie/components/form/controls/number.ftl" />
+						<constraint-handlers>
+							<constraint type="NUMBER" event="keyup" validation-handler="Alfresco.forms.validation.number" />
+						</constraint-handlers>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config evaluator="model-type" condition="ada:document">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="ada:employeeNumber" />
+					<show id="ada:employeeBsn" />
+					<show id="ada:employeeName" />
+					<show id="ada:employeeMrn" />
+					<show id="ada:employeeDepartment" />
+					<show id="ada:docCategory" />
+					<show id="ada:docSubject" />
+					<show id="ada:docDate" />
+					<show id="ada:docReference" />
+					<show id="ada:docWorkDossier" />
+					<show id="ada:docCaseNumber" />
+				</field-visibility>
+				<appearance>
+					<set id="adaDocument" appearance="" template="/org/alfresco/components/form/2-column-set.ftl" />
+					<field id="ada:employeeNumber" label-id="label.employeeNumber">
+						<control template="/nl/defensie/components/form/controls/number.ftl" />
+						<constraint-handlers>
+							<constraint type="NUMBER" event="keyup" validation-handler="Alfresco.forms.validation.number" />
+							<constraint type="VALIDATE" event="blur" validation-handler="Alfresco.forms.validation.updateDocCategory" message="_prop_ada_employeeNumber" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:employeeBsn" label-id="label.employeeBsn" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl">
+							<control-param name="default">NLD-</control-param>
+						</control>
+						<constraint-handlers>
+							<constraint type="VALIDATE" event="blur" validation-handler="Alfresco.forms.validation.updateDocCategory" message="_prop_ada_employeeBsn" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:employeeMrn" label-id="label.employeeMrn" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/number.ftl" />
+						<constraint-handlers>
+							<constraint type="NUMBER" event="keyup" validation-handler="Alfresco.forms.validation.number" />
+							<constraint type="VALIDATE" event="blur" validation-handler="Alfresco.forms.validation.updateDocCategory" message="_prop_ada_employeeMrn" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:employeeDepartment" label-id="label.employeeDepartment" set="adaDocument" />
+					<field id="ada:docCategory" label-id="label.docCategory" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/adacta-selectone.ftl">
+							<control-param name="jsonGetUrl">nl/defensie/adacta/selectone/categoryItem</control-param>
+							<control-param name="jsonGetId">name</control-param>
+							<control-param name="jsonGetName">msg</control-param>
+						</control>
+						<constraint-handlers>
+							<constraint type="VALIDATE" event="blur" validation-handler="Alfresco.forms.validation.updateDocSubject" message="empty" />
+						</constraint-handlers>
+					</field>
+					<field id="ada:docDate" label-id="label.docDate" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/daterange.ftl" />
+					</field>
+					<field id="ada:docWorkDossier" label-id="label.docWorkDossier" set="adaDocument" />
+					<field id="ada:employeeName" label-id="label.employeeName" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/textfield.ftl">
+							<control-param name="style">text-transform: capitalize;</control-param>
+						</control>
+					</field>
+					<field id="ada:docSubject" label-id="label.docSubject" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/adacta-selectone.ftl">
+							<control-param name="jsonGetUrl">nl/defensie/adacta/selectone/subjectItem</control-param>
+							<control-param name="jsonGetId">name</control-param>
+							<control-param name="showList">false</control-param>
+							<control-param name="defaultValue"></control-param>
+							<control-param name="defaultText"></control-param>
+						</control>
+					</field>
+					<field id="ada:docReference" label-id="label.docReference" set="adaDocument" />
+					<field id="ada:docCaseNumber" label-id="label.docCaseNumber" set="adaDocument">
+						<control template="/nl/defensie/components/form/controls/number.ftl" />
+						<constraint-handlers>
+							<constraint type="NUMBER" event="keyup" validation-handler="Alfresco.forms.validation.number" />
+						</constraint-handlers>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+</alfresco-config>

@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>Admin form</shortname>
+  <description>Displays specific metadata for Admin</description>
+  <url>/components/document-details/admin-form</url>
+</webscript>

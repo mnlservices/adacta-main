@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="adacta-share_configBootstrap" class="org.springframework.extensions.config.ConfigBootstrap" init-method="register" depends-on="webframework.configsource">
+		<property name="configService" ref="web.config" />
+		<property name="configs">
+			<list>
+				<value>classpath:alfresco/web-extension/site-config/adacta-config.xml</value>
+				<value>classpath:alfresco/web-extension/site-config/adacta-action-config.xml</value>
+				<value>classpath:alfresco/web-extension/site-config/adacta-form-config.xml</value>
+				<value>classpath:alfresco/web-extension/site-config/adacta-form-data-lists-config.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="adacta-share_share.resources" class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
+		<property name="resourceBundles">
+			<list>
+				<value>alfresco.messages.adacta</value>
+				<value>alfresco/web-extension/messages/adacta-category-subject-lists</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Component evaluator -->
+
+	<bean id="adacta.folder.component.evaluator" class="nl.defensie.adacta.web.extensibility.SlingshotAdactaTypeComponentEvaluator">
+		<property name="slingshotEvaluatorUtil" ref="slingshot.evaluator.utility" />
+		<property name="evaluateOnlyFolder" value="true" />
+	</bean>
+
+	<bean id="adacta.document.component.evaluator" class="nl.defensie.adacta.web.extensibility.SlingshotAdactaTypeComponentEvaluator">
+		<property name="slingshotEvaluatorUtil" ref="slingshot.evaluator.utility" />
+		<property name="evaluateOnlyFolder" value="false" />
+	</bean>
+
+	<bean id="adacta.selectedItems.component.evaluator" class="nl.defensie.adacta.web.extensibility.SlingshotAdactaSelectedItemsComponentEvaluator">
+		<property name="slingshotEvaluatorUtil" ref="slingshot.evaluator.utility" />
+	</bean>
+
+	<!-- Evaluator -->
+
+	<bean id="evaluator.adacta.hasNextSelectedItems" class="nl.defensie.adacta.evaluator.HasNextSelectedItems">
+		<property name="scriptRemote" ref="webframework.webscripts.scriptremote" />
+	</bean>
+
+	<bean id="evaluator.adacta.hasPreviousSelectedItems" class="nl.defensie.adacta.evaluator.HasPreviousSelectedItems">
+		<property name="scriptRemote" ref="webframework.webscripts.scriptremote" />
+	</bean>
+
+	<bean id="evaluator.adacta.isDocumentType" parent="evaluator.doclib.action.nodeType">
+		<property name="types">
+			<list>
+				<value>ada:document</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.isDossierType" parent="evaluator.doclib.action.nodeType">
+		<property name="types">
+			<list>
+				<value>ada:dossier</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.hasDestroyCode" class="nl.defensie.adacta.evaluator.HasDestroyCode">
+		<property name="codes">
+			<list>
+				<value>V1</value>
+				<value>V2</value>
+				<value>V3</value>
+				<value>V4</value>
+				<value>V5</value>
+				<value>V6</value>
+				<value>V7</value>
+				<value>V8</value>
+				<value>V1C</value>
+				<value>V2C</value>
+				<value>V3C</value>
+				<value>V4C</value>
+				<value>V5C</value>
+				<value>V6C</value>
+				<value>V7C</value>
+				<value>V8C</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.docWorkDossierIsNotNull" parent="evaluator.doclib.action.propertyNotNull">
+		<property name="property" value="ada:docWorkDossier" />
+	</bean>
+
+	<bean id="evaluator.adacta.employeeBsnNotNull" parent="evaluator.doclib.action.propertyNotNull">
+		<property name="property" value="ada:employeeBsn" />
+	</bean>
+
+	<!-- <bean id="evaluator.adacta.docWorkDossierIsEmpty" parent="evaluator.doclib.action.value"> <property name="accessor" value="node.properties.ada:docWorkDossier" /> <property name="comparator"> 
+		<bean class="org.alfresco.web.evaluator.StringEqualsComparator"> <property name="value" value="" /> </bean> </property> </bean> -->
+
+	<bean id="evaluator.adacta.isAdmin" parent="evaluator.doclib.action.groupMembership">
+		<property name="relation">
+			<value>OR</value>
+		</property>
+		<property name="groups">
+			<list>
+				<value>GROUP_ALFRESCO_ADMINISTRATORS</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.isAdactaUser" parent="evaluator.doclib.action.groupMembership">
+		<property name="relation" value="OR" />
+		<property name="groups">
+			<list>
+				<value>GROUP_ADACTA_RAADPLEGER</value>
+				<value>GROUP_ADACTA_INVOERDER</value>
+				<value>GROUP_ADACTA_BEHEERDER</value>
+				<value>GROUP_ALFRESCO_ADMINISTRATORS</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.isRaadpleger" parent="evaluator.doclib.action.groupMembership">
+		<property name="relation">
+			<value>OR</value>
+		</property>
+		<property name="groups">
+			<list>
+				<value>GROUP_ADACTA_RAADPLEGER</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.isBeheerder" parent="evaluator.doclib.action.groupMembership">
+		<property name="relation">
+			<value>OR</value>
+		</property>
+		<property name="groups">
+			<list>
+				<value>GROUP_ADACTA_BEHEERDER</value>
+				<value>GROUP_ALFRESCO_ADMINISTRATORS</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="evaluator.adacta.isInvoerderOrBeheerder" parent="evaluator.doclib.action.groupMembership">
+		<property name="relation">
+			<value>OR</value>
+		</property>
+		<property name="groups">
+			<list>
+				<value>GROUP_ADACTA_INVOERDER</value>
+				<value>GROUP_ADACTA_BEHEERDER</value>
+				<value>GROUP_ALFRESCO_ADMINISTRATORS</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

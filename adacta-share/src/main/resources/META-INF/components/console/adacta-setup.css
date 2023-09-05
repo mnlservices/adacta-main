@@ -1,0 +1,69 @@
+.adacta-setup
+{
+   margin: 16px 10px 10px;
+}
+
+.adacta-setup .title
+{
+   font-size: 123.1%;
+   font-weight: bold;
+   padding-bottom: 0.5em;
+}
+
+.adacta-setup .row
+{
+   padding: 0.333em;
+   height: 2.5em;
+}
+
+.adacta-setup .row div
+{
+   float: left;
+}
+
+.adacta-setup .label
+{
+   padding: 0.333em;
+   font-weight: bold;
+}
+
+.adacta-setup .label a
+{
+   text-decoration: none;
+}
+
+.adacta-setup .label a:hover
+{
+   text-decoration: underline;
+}
+
+.adacta-setup .apply
+{
+   clear: both;
+   margin: 2em 12em;
+}
+
+.adacta-setup .info
+{
+   padding-bottom: 0.75em;
+}
+
+.adacta-setup .description
+{
+   padding-left: 1.5em;
+}
+
+.adacta-setup .info a
+{
+   text-decoration: underline;
+}
+
+.adacta-setup .description a
+{
+   text-decoration: underline;
+}
+
+.adacta-setup .description a:hover
+{
+   text-decoration: none;
+}

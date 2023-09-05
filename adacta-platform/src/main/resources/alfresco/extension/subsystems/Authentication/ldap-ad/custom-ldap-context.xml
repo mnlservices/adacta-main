@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Add additional properties for the LDAP synchronization. Currently no extension point available: https://issues.alfresco.com/jira/browse/ACE-4810. -->
+
+	<bean id="adacta.customUserRegistry" class="nl.defensie.adacta.ldap.CustomUserRegistry" depends-on="adacta-platform_dictionaryBootstrap" p:userRegistry-ref="userRegistry">
+		<property name="personAttributeMapping">
+			<map>
+				<entry key="ada:employeeID" value="${ldap.synchronization.employeeID}" />
+				<entry key="ada:whenChanged" value="${ldap.synchronization.modifyTimestampAttributeName}" />
+			</map>
+		</property>
+	</bean>
+
+</beans>

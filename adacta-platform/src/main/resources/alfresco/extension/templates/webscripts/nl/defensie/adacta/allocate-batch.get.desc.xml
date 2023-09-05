@@ -1,0 +1,10 @@
+<webscript>
+   <shortname>Allocate batch to user</shortname>
+   <description>Allocate scan or import batch to user</description>
+   <url>/nl/defensie/adacta/allocatebatch/{store_type}/{store_id}/{id}</url>
+   <url>/nl/defensie/adacta/allocatebatch/{store_type}/{store_id}/{id}/{clear}</url>
+   <family>Adacta</family>
+   <format default="json" />
+   <authentication>user</authentication>
+   <transaction>required</transaction>
+</webscript>

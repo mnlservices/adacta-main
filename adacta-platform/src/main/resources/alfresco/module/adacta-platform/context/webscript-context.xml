@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="adacta-abstract" class="nl.defensie.adacta.webscript.AdactaAbstract" abstract="true" parent="webscript" />
+	<bean id="adacta-node-map-comparator" class="nl.defensie.adacta.webscript.NodeMapComparator" />
+
+	<bean id="webscript.nl.defensie.adacta.setup.get" class="nl.defensie.adacta.webscript.SetupGet" parent="webscript" />
+	<bean id="webscript.nl.defensie.adacta.global-properties.get" class="nl.defensie.adacta.webscript.AdactaGlobalPropertiesGet" parent="adacta-abstract" />
+
+	<bean id="webscript.nl.defensie.adacta.children.get" class="nl.defensie.adacta.webscript.ChildrenGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.children-open.get" class="nl.defensie.adacta.webscript.ChildrenOpenGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.node-details.get" class="nl.defensie.adacta.webscript.NodeDetailsGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.allocate-batch.get" class="nl.defensie.adacta.webscript.AllocateBatchGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.node.delete" class="nl.defensie.adacta.webscript.NodeDelete" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.user-properties.get" class="nl.defensie.adacta.webscript.UserPropertiesGet" parent="adacta-abstract" />
+
+	<!-- Search -->
+
+	<bean id="webscript.nl.defensie.adacta.search.import-folder-list.get" class="nl.defensie.adacta.webscript.ImportFolderListGet" parent="adacta-abstract">
+		<property name="nodeMapComparator" ref="adacta-node-map-comparator" />
+	</bean>
+	<bean id="webscript.nl.defensie.adacta.search.file-folder.get" class="nl.defensie.adacta.webscript.FileFolderGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.search.root-folder.get" class="nl.defensie.adacta.webscript.RootFolderGet" parent="adacta-abstract" />
+
+	<!-- Preferences -->
+
+	<bean id="webscript.nl.defensie.adacta.preferences.selected-items.get" class="nl.defensie.adacta.webscript.preferences.SelectedItemsGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.preferences.selected-items.post" class="nl.defensie.adacta.webscript.preferences.SelectedItemsPost" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.preferences.has-previous-next-selected-items.get" class="nl.defensie.adacta.webscript.preferences.HasPreviousNextSelectedItemsGet"
+		parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.preferences.clear-selected-items.get" class="nl.defensie.adacta.webscript.preferences.ClearSelectedItemsGet" parent="adacta-abstract" />
+
+	<!-- Form -->
+
+	<bean id="webscript.nl.defensie.adacta.form.categories.get" class="nl.defensie.adacta.webscript.form.CategoryFilterGet" parent="adacta-abstract" />
+	<bean id="webscript.nl.defensie.adacta.form.selectone.get" class="nl.defensie.adacta.webscript.form.CategorySubjectSelectOneGet" parent="adacta-abstract" />
+
+</beans>

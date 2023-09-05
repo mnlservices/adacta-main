@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>Add selected items to preferences</shortname>
+	<description>Add selected items to preferences</description>
+	<url>/nl/defensie/adacta/preferences/selected-items</url>
+	<format default="json">argument</format>
+	<authentication>user</authentication>
+	<family>Adacta</family>
+</webscript>

@@ -1,0 +1,1 @@
+if(document&&document.typeShort!="ada:document"){document.specializeType("ada:document");document.properties["ada:docDateCreated"]=document.properties["cm:created"];document.save()};

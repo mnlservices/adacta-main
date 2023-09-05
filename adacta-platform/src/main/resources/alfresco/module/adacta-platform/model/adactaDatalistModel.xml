@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="adadl:adactaModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<description>Adacta Datalist Model</description>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.defensie.nl/adacta/datalist/1.0" prefix="adadl" />
+	</namespaces>
+
+	<types>
+
+		<type name="adadl:categoryItem">
+		    <title>Rubriek</title>
+            <description>Rubriek</description>
+			<parent>dl:dataListItem</parent>
+			<mandatory-aspects>
+				<aspect>adadl:item</aspect>
+			</mandatory-aspects>
+		</type>
+
+		<type name="adadl:subjectItem">
+		    <title>Onderwerp</title>
+            <description>Onderwerp</description>
+			<parent>dl:dataListItem</parent>
+			<mandatory-aspects>
+				<aspect>adadl:item</aspect>
+			</mandatory-aspects>
+		</type>
+
+	</types>
+
+	<aspects>
+
+		<aspect name="adadl:item">
+			<properties>
+				<property name="adadl:value">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="adadl:description">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+
+	</aspects>
+
+</model>

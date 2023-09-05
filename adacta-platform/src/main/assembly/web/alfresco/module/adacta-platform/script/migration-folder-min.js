@@ -1,0 +1,1 @@
+function main(){var a=250;var b=4;updateMigratedDossiers(a,b)}main();function updateMigratedDossiers(c,d){var a=adacta.getSiteDocumentLibrary();var b=a.childByNamePath("Dossiers");batchExecuter.processFolderRecursively({root:b,batchSize:c,threads:d,onNode:function(f){var e=((f.qnamePath).match(/\//g)).length;if(e===9){adacta.changeFolderTypeAndMetadata(f)}}})};

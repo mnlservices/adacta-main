@@ -1,0 +1,9 @@
+<webscript>
+   <shortname>Get children of provided dossier noderef with status 'Actief'</shortname>
+   <description>Get open Adacta files </description>
+   <url>/nl/defensie/adacta/children-open/{store_type}/{store_id}/{id}</url>
+   <family>Adacta</family>
+   <format default="json" />
+   <authentication>user</authentication>
+   <transaction allow="readonly">required</transaction>
+</webscript>
