@@ -3,11 +3,21 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.defensie.adacta</groupId>
     <artifactId>adacta</artifactId>
-    <version>1.10.4</version>
+    <version>1.10.4-SNAPSHOT</version>
     <name>ADACTA AIO - SDK 4.3</name>
     <description>ADACTA All-In-One (AIO) project for SDK 4.3</description>
     <packaging>pom</packaging>
     <distributionManagement>
+      <repository>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/mnlservices/adacta-main</url>
+        <snapshots>
+	  <enabled>true</enabled>
+        </snapshots>
+      </repository>
+    </distributionManagement>
+<!--    <distributionManagement>
       <snapshotRepository>
             <id>mindef-pom-snapshots</id>
             <url>https://alfresco-nexus-t.bcp.mindef.nl/repository/mindef-pom-snapshots</url>
@@ -17,10 +27,12 @@
             <url>https://alfresco-nexus-t.bcp.mindef.nl/repository/mindef-pom</url>
         </repository>
     </distributionManagement>
+-->
+
    <scm>
-      <connection>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</connection>
-      <url>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</url>
-      <developerConnection>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</developerConnection>
+      <connection>scm:git:git@github.com:mnlservices/adacta-main.git</connection>
+      <url>scm:git:git@github.com:mnlservices/adacta-main.git</url>
+      <developerConnection>scm:git:git@github.com:mnlservices/adacta-main.git</developerConnection>
       <tag>adacta-1.10.4</tag>
    </scm>
     <prerequisites>
