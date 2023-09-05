@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.defensie.adacta</groupId>
     <artifactId>adacta</artifactId>
-    <version>1.10.4-SNAPSHOT</version>
+    <version>1.10.4</version>
     <name>ADACTA AIO - SDK 4.3</name>
     <description>ADACTA All-In-One (AIO) project for SDK 4.3</description>
     <packaging>pom</packaging>
@@ -21,7 +21,7 @@
       <connection>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</connection>
       <url>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</url>
       <developerConnection>scm:git:git@git.mindef.nl:alfresco-bcp/pom/adacta.git</developerConnection>
-      <tag>adacta-1.0.5</tag>
+      <tag>adacta-1.10.4</tag>
    </scm>
     <prerequisites>
         <maven>3.5.4</maven>
